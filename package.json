@@ -1,0 +1,11 @@
+{
+  "name": "DBMS",
+  "Version": "1.0.0",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "mysql": "^2.17.1"
+  }
+}
