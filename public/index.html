@@ -11,7 +11,14 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous"
     />
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link
       rel="stylesheet"
@@ -27,25 +34,49 @@
   </head>
 
   <body>
-    <form method="GET" action="/action_page">
-      First name:<br />
-      <input type="text" name="firstname" value="Mickey" /><br />
-      Last name:<br />
-      <input type="text" name="lastname" value="Mouse" /><br /><br />
-      Address:<br />
-      <input type="text" name="Address" value="New York" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    <form method="GET" action="/Search">
-      Enter Keyword:<br />
-      <input type="text" name="searchbox" value="Search" /><br />
-      <input type="submit" value="Search" />
-      <button onclick="Search()">Search Action</button>
-    </form>
+    <div class="container">
+      <label for="First">First name:</label>
+      <br />
+      <input
+        type="text"
+        id="myFirstName"
+        name="firstname"
+        placeholder="Enter First name"
+        class="form-control"
+      /><br />
+      <label for="Last"> Last name:</label><br />
+      <input
+        type="text"
+        id="myLastName"
+        name="lastname"
+        placeholder="Enter Last name"
+        class="form-control"
+      /><br /><br />
+      <label for="Address">Address:</label><br />
+      <input
+        type="text"
+        id="myAddress"
+        name="Address"
+        placeholder="Enter Address"
+        class="form-control"
+      /><br /><br />
+      <button type="submit" class="btn btn-primary" onclick="Action()">
+        Submit
+      </button>
 
-    Enter sear:<br />
-    <input type="text" name="searchbox" value="Search" /><br />
-    <input type="submit" value="Search" />
-    <button onclick="Search">Search Action</button>
+      <br /><br />
+      Enter Keyword:<br />
+      <input
+        id="mySearchBox"
+        type="text"
+        name="searchbox"
+        class="form-control"
+        placeholder="Search"
+      /><br />
+      <button onclick="Search()" type="submit" class="btn btn-primary">
+        Search Action
+      </button>
+    </div>
+    <div id="InsertDiv"></div>
   </body>
 </html>

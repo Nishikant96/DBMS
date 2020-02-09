@@ -8,19 +8,26 @@ var http = require("http");
 var server = http.Server(app);
 
 //DB Credentials
-var connection = mysql.createConnection({
+// var connection = mysql.createConnection({
+//   host: "remotemysql.com",
+//   user: "3p5jNBnwhk",
+//   password: "aQDdkJnzLF",
+//   database: "3p5jNBnwhk"
+// });
+
+const pool = mysql.createPool({
   host: "remotemysql.com",
   user: "3p5jNBnwhk",
-  password: "aQDdkJnzLF",
-  database: "3p5jNBnwhk"
+  database: "3p5jNBnwhk",
+  password: "aQDdkJnzLF"
 });
 
 // Check Database connection
-connection.connect(function(error) {
-  if (!error) {
-    console.log("Connection Successful!");
-  } else console.log("Connection Failed!");
-});
+// connection.connect(function(error) {
+//   if (!error) {
+//     console.log("Connection Successful!");
+//   } else console.log("Connection Failed!");
+// });
 
 app.get("/", function(req, resp) {
   //Mysql Queries Go here
@@ -30,7 +37,7 @@ app.get("/action_page", function(req, resp) {
   //Mysql Queries Go here
   console.log("Get method Successful!");
   ///
-  connection.query(
+  pool.query(
     "Insert into xx_project_student values ('" +
       req.query.firstname +
       "','" +
@@ -52,16 +59,16 @@ app.get("/action_page", function(req, resp) {
       }
     }
   );
-  resp.sendFile(__dirname + "/index.html");
+  resp.send("Success");
   ///
 });
 
-app.get("/search", function(req, resp) {
+app.get("/Search", function(req, resp) {
   //Mysql Queries Go here
   console.log("Search method Successful!");
   ///
-  connection.query(
-    "Select * from xx_project_student where upper(firstname) like  UPPER('%" +
+  pool.query(
+    "Select distinct firstname,lastname,address from xx_project_student where upper(firstname) like  UPPER('%" +
       req.query.searchbox +
       "%') or upper(lastname) like  UPPER('%" +
       req.query.searchbox +
